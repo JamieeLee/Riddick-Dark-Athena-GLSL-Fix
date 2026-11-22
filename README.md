@@ -12,13 +12,19 @@ This is not a graphics enhancement. It aims to retain original behavior while im
 
 ## Install — manual (recommended)
 
-The shader file is located inside your game's installation folder. A typical path is:
+The shader file is located inside the game's installation folder. Example locations:
 
+**Standalone installation:**
 ```text
 D:\The Chronicles of Riddick - Assault on Dark Athena\System\GL\HLInclude_GLSL.xrg
 ```
 
-Replace `D:` with the drive and game installation location on your computer. This is the **game folder**, not the folder under AppData.
+**Steam installation (default Steam library example):**
+```text
+C:\Program Files (x86)\Steam\steamapps\common\The Chronicles of Riddick - Assault on Dark Athena\System\GL\HLInclude_GLSL.xrg
+```
+
+Your drive, Steam library location, or game-folder name may differ. In Steam, use **Manage → Browse local files** to find the installed game directory, then open `System\GL`. This is the **game folder**, not AppData.
 
 1. Find your game's `System\GL\HLInclude_GLSL.xrg` file.
 2. **Back it up** before editing.
