@@ -53,20 +53,6 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\Apply-Fix.ps1 "C:\Path\To\
 - If the two macros are already present, it reports that the patch is already applied.
 - The script does not download anything or modify other game files.
 
-## If the OpenGL error changes to "Unhandled Exception" (NVIDIA only)
-
-Some existing community instructions describe a **separate** NVIDIA driver-profile workaround if the initial OpenGL/GLSL startup error disappears but the game then fails with an "Unhandled Exception":
-
-1. Open **NVIDIA Profile Inspector** (a third-party utility).
-2. Select the profile for **The Chronicles of Riddick: Assault on Dark Athena**.
-3. Under **Common**, find **Extension Limit (OGL)**.
-4. Change the value from **Off** to `0x00004844`.
-5. Click **Apply Changes**, then try launching the game again.
-
-This is **optional troubleshooting**, not part of the shader patch or a required installation step. The value comes from earlier community repair instructions; it has **not been verified as necessary for this bias-preserving patch**. Change only the game's profile, note its previous value, and restore the previous setting if it does not help. Profile Inspector is **not bundled or installed** by this repository.
-
-Source of this additional workaround: [Chronicles of Riddick Modern Drivers Fix (Nexus Mods)](https://www.nexusmods.com/chroniclesofriddickassaultondarkathena/mods/6).
-
 ## Tested / limitations
 
 - **Confirmed by one player:** Game starts and renders on an **NVIDIA GeForce RTX 4070 SUPER** with this modification in place (November 2026). NVIDIA driver version and game distribution/build were not recorded.
