@@ -21,7 +21,7 @@ D:\The Chronicles of Riddick - Assault on Dark Athena\System\GL\HLInclude_GLSL.x
 
 **Steam installation (default Steam library example):**
 ```text
-C:\Program Files (x86)\Steam\steamapps\common\The Chronicles of Riddick - Assault on Dark Athena\System\GL\HLInclude_GLSL.xrg
+Steam\steamapps\common\The Chronicles of Riddick - Assault on Dark Athena\System\GL\HLInclude_GLSL.xrg
 ```
 
 Your drive, Steam library location, or game-folder name may differ. In Steam, use **Manage → Browse local files** to find the installed game directory, then open `System\GL`. This is the **game folder**, not AppData.
