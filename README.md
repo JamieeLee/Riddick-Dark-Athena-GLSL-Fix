@@ -15,6 +15,8 @@ This is not a graphics enhancement. It aims to retain original behavior while im
 The shader file is located inside the game's installation folder. Example locations:
 
 **Standalone installation:**
+Find the game's installation folder on your system drive or whichever drive you selected during setup, then navigate to:
+
 ```text
 The Chronicles of Riddick - Assault on Dark Athena\System\GL\HLInclude_GLSL.xrg
 ```
