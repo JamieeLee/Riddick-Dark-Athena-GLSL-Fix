@@ -1,0 +1,131 @@
+#version 120
+
+//Might need to fix this in case pxlfmt says it's unsupported
+#extension GL_ARB_draw_buffers : enable
+#extension GL_ATI_shader_texture_lod : enable
+
+#define target_glsl
+#define _CLIPVERTEX_
+
+#define CONST_ARRAY_START(_Type,_Name,_Len)     _Type _Name[_Len] = _Type[_Len] (
+#define CONST_ARRAY_END             )
+
+#define IsFrontFacing  gl_FrontFacing
+
+#define MACRO_IsolateCode(_x)        { _x }
+
+#define M_PI 3.141592653589
+#define M_2PI 6.28318530717
+#define M_PI_RCP 0.318309886183
+#define M_2PI_RCP 0.159154943091
+
+#define float4       vec4
+#define float3       vec3
+#define float2       vec2
+#define half         float
+#define half2        vec2
+#define half3        vec3
+#define half4        vec4
+#define samplerCUBE  samplerCube
+
+#define tex1D        texture1D
+#define tex2D        texture2D
+#define tex2Dproj    texture2DProj
+#define tex3D        texture3D
+#define texCUBE      textureCube
+
+#define texDyn2D         texture2D
+#define texDynCUBE       textureCube
+#define textureDyn2D     texture2D
+#define textureDynCube   textureCube
+
+// Preserve fragment-stage LOD bias without defining stage-invalid GLSL 1.20 functions.
+// GLSL 1.20 preprocessor directives must each fit on one line.
+#define tex2DBias(_tex, _st, _bias) texture2D((_tex), (_st), (_bias))
+#define texCubeBias(_tex, _str, _bias) textureCube((_tex), (_str), (_bias))
+
+float4 tex2Dlod(sampler2D _tex, vec4 _Coord) { return texture2DLod(_tex,_Coord.xy,_Coord.w); }
+float4 texCUBElod(samplerCube _tex, vec4 _Coord) { return textureCubeLod(_tex,_Coord.xyz,_Coord.w); }
+
+#define splat4       vec4
+#define splat3       vec3
+#define splat2       vec2
+
+#define clip(_x)   { if ((_x) < 0.0) discard; }
+
+#define atan2        atan
+#define isnan(_Val)  (!(_Val == _Val))
+#define fmod         mod
+float rsqrt(float _Value) { return inversesqrt(_Value); }
+float frac(float _Value) { return fract(_Value); }
+float2 frac(float2 _Value) { return fract(_Value); }
+float3 frac(float3 _Value) { return fract(_Value); }
+float4 frac(float4 _Value) { return fract(_Value); }
+
+float lerp(float _a, float _b, float _t) { return _t * (_b - _a) + _a; }
+float2 lerp(float2 _a, float2 _b, float2 _t) { return _t * (_b - _a) + _a; }
+float2 lerp(float2 _a, float2 _b, float _t) { return _t * (_b - _a) + _a; }
+float3 lerp(float3 _a, float3 _b, float3 _t) { return _t * (_b - _a) + _a; }
+float3 lerp(float3 _a, float3 _b, float _t) { return _t * (_b - _a) + _a; }
+float4 lerp(float4 _a, float4 _b, float4 _t) { return _t * (_b - _a) + _a; }
+float4 lerp(float4 _a, float4 _b, float _t) { return _t * (_b - _a) + _a; }
+
+float saturate(float _Value)
+{
+    return clamp(_Value,0.0,1.0);
+}
+
+vec2 saturate(vec2 _Value)
+{
+    return clamp(_Value,0.0,1.0);
+}
+
+vec3 saturate(vec3 _Value)
+{
+    return clamp(_Value,0.0,1.0);
+}
+
+vec4 saturate(vec4 _Value)
+{
+    return clamp(_Value,0.0,1.0);
+}
+
+void sincos(float _Angle,out float _Sn,out float _Cs)
+{
+    _Sn = sin(_Angle);
+    _Cs = cos(_Angle);
+}
+
+float ldexp(float _Mul,float _Exp)
+{
+    return _Mul * pow(2.0,_Exp);
+}
+
+float log10(float _Val)
+{
+    return log(_Val) / log(10.0);
+}
+
+//Hyperbolic functions unverified!
+float sinh(float _Angle)
+{
+    float Ret = exp(_Angle) - exp(-_Angle);
+    return Ret / 2.0;
+}
+
+float cosh(float _Angle)
+{
+    float Ret = exp(_Angle) + exp(-_Angle);
+    return Ret / 2.0;
+}
+
+float tanh(float _Angle)
+{
+    return (exp(2.0 * _Angle) - 1.0) / (exp(2.0 * _Angle) + 1.0);
+}
+
+int Index(float _iValue) { return int(_iValue); }
+float ARL(float _Arg1) { return floor(_Arg1); }
+
+vec4 tex2Dvtx(sampler2D _Sampler,vec4 _TC) { return texture2D(_Sampler,_TC.xy); }
+vec4 texCUBEvtx(samplerCube _Sampler,vec4 _TC) { return textureCube(_Sampler,_TC.xyz); }
